@@ -1,5 +1,5 @@
-# OnTheRoadToPhandelver
+# On the Road to Phandelver
 
 in progress
 
-This project is a short text based RPG
+this is the frontend code for otrtp, a text based RPG built on react
