@@ -1,12 +1,17 @@
 import "./App.css";
 import Home from "./pages/home";
 import Menu from "./pages/menu";
+import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "./components/AuthContext";
 
 function App() {
+  //navigate
+  //let navi = useNavigate();
+
+  //check if logged in
   const [authState, setAuthState] = useState(false);
   const accessToken = {
     headers: { accessToken: localStorage.getItem("accessToken") },
@@ -22,9 +27,11 @@ function App() {
     });
   }, []);
 
+  //logout button
   const logout = () => {
     localStorage.removeItem("accessToken");
     setAuthState(false);
+    //navi("/");
   };
   return (
     <div className="App">
