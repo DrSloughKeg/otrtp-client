@@ -8,6 +8,12 @@ import { AuthContext } from "../components/AuthContext";
 function Home() {
   //navigate
   let navi = useNavigate();
+
+  //toggle regi
+  const [toggleRegi, SetToggleRegi] = useState(false);
+  //toggle regi success
+  const [toggleRegiSuccess, setToggleRegiSuccess] = useState(false);
+
   //init loggin state and check
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const accessToken = localStorage.getItem("accessToken");
@@ -24,6 +30,7 @@ function Home() {
   const { setAuthState } = useContext(AuthContext);
 
   const login = () => {
+    setToggleRegiSuccess(false);
     const data = { username: username, password: password };
     axios.post("http://localhost:3001/users/login", data).then((response) => {
       if (response.data.error) {
@@ -31,13 +38,10 @@ function Home() {
       } else {
         localStorage.setItem("accessToken", response.data);
         setAuthState(true);
-        navi("/");
+        navi("/playMenu");
       }
     });
   };
-
-  //toggle regi
-  const [toggleRegi, SetToggleRegi] = useState(false);
 
   //on regi
   const initialValues = {
@@ -62,11 +66,13 @@ function Home() {
   });
 
   const registration = (data) => {
+    setToggleRegiSuccess(false);
     axios.post("http://localhost:3001/users/regi", data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {
-        navi("/");
+        SetToggleRegi(false);
+        setToggleRegiSuccess(true);
       }
     });
   };
@@ -75,7 +81,7 @@ function Home() {
     !isLoggedIn &&
     (!toggleRegi ? (
       <div>
-        <p>{toggleRegi}</p>
+        {toggleRegiSuccess && <p>Registration successful!</p>}
         <label>Username: </label>
         <input
           type="text"
@@ -122,6 +128,10 @@ function Home() {
               </div>
               <div className="inner">
                 <button type="submit"> Register!</button>
+
+                <button onClick={() => SetToggleRegi(false)}>
+                  Already have an account? Login!
+                </button>
               </div>
             </Form>
           </Formik>
