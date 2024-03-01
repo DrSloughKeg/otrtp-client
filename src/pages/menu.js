@@ -28,6 +28,8 @@ function Menu() {
   const [cha, setCha] = useState(10);
   const [points, setPTS] = useState(15);
 
+  const [name, setName] = useState("");
+
   //increase/decrease stats
   const increaseStat = (stat, setStat) => {
     if (points > 0 && stat < 20) {
@@ -48,7 +50,32 @@ function Menu() {
     setSelectedClass(charClass);
   };
 
-  const createChar = () => {};
+  const createChar = () => {
+    axios
+      .post(
+        "http://localhost:3001/character/create",
+        {
+          str: str,
+          dex: dex,
+          con: con,
+          intl: intl,
+          wis: wis,
+          cha: cha,
+          charClass: selectedClass,
+          name: name,
+        },
+        {
+          headers: { accessToken },
+        }
+      )
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          console.log("success");
+        }
+      });
+  };
 
   const [toggleCharCreate, setToggleCharCreate] = useState(false);
 
@@ -99,6 +126,13 @@ function Menu() {
             </div>
           </div>
           <div className="classes">
+            <label>Name: </label>
+            <input
+              type="text"
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
             <div className="classbox">
               <div
                 className={
@@ -171,7 +205,7 @@ function Menu() {
           {allUserChars &&
             allUserChars.map((value, key) => {
               return (
-                <div key={key}>
+                <div key={key} className="charCard">
                   <h3>{value.charName}</h3>
                   <h3>{value.lvl}</h3>
                   <h3>{value.class}</h3>

@@ -32,6 +32,7 @@ body {
     margin: 10px;
   }
 }
+
 .creation {
   display: flex;
   flex-direction: row;
@@ -79,4 +80,9 @@ body {
       align-items: center;
     }
   }
+}
+
+.charCard {
+  border: 5px solid #1a1f16;
+  border-radius: 5px;
 }
