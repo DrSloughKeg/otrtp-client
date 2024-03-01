@@ -1,6 +1,7 @@
 import "./App.css";
 import Home from "./pages/home";
 import Menu from "./pages/menu";
+import Play from "./pages/play";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/playMenu" element={<Menu />} />
             <Route path="*" element={<Home />} />
+            <Route path="/play" element={<Play />} />
           </Routes>
         </Router>
       </AuthContext.Provider>

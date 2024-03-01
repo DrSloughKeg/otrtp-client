@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
+  //navigate
+  let navi = useNavigate();
+
+  //toggle creation
+  const [toggleCharCreate, setToggleCharCreate] = useState(false);
+  const [updatecharlist, setUpdateCharList] = useState(0);
+
+  //get a list of all character with this user id
   const accessToken = localStorage.getItem("accessToken");
   const [allUserChars, setAllUserChars] = useState([]);
-  //get a list of all character with this user id
   useEffect(() => {
     axios
       .get("http://localhost:3001/character/getByUserId", {
@@ -17,7 +25,43 @@ function Menu() {
           setAllUserChars(response.data);
         }
       });
-  }, []);
+  }, [updatecharlist]);
+
+  //delete character
+  const deleteChar = (charId) => {
+    axios
+      .delete("http://localhost:3001/character/delete", {
+        headers: { accessToken },
+        data: { charId: charId },
+      })
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          console.log("char deleted");
+          setUpdateCharList(updatecharlist + 1);
+        }
+      });
+  };
+
+  //play
+  //create a play token of char id and navigate to play.js
+  const playChar = (charId) => {
+    axios
+      .post(
+        "http://localhost:3001/character/play",
+        { charId: charId },
+        { headers: { accessToken } }
+      )
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          localStorage.setItem("playToken", response.data);
+          navi("/play");
+        }
+      });
+  };
 
   //create Character
   const [str, setStr] = useState(10);
@@ -27,7 +71,6 @@ function Menu() {
   const [wis, setWis] = useState(10);
   const [cha, setCha] = useState(10);
   const [points, setPTS] = useState(15);
-
   const [name, setName] = useState("");
 
   //increase/decrease stats
@@ -45,7 +88,6 @@ function Menu() {
   };
 
   const [selectedClass, setSelectedClass] = useState("warrior");
-
   const selectClass = (charClass) => {
     setSelectedClass(charClass);
   };
@@ -73,11 +115,11 @@ function Menu() {
           alert(response.data.error);
         } else {
           console.log("success");
+          setToggleCharCreate(false);
+          setUpdateCharList(updatecharlist + 1);
         }
       });
   };
-
-  const [toggleCharCreate, setToggleCharCreate] = useState(false);
 
   return (
     <div>
@@ -211,6 +253,10 @@ function Menu() {
                   <h3>{value.class}</h3>
                   <h3>{value.hp}</h3>
                   <h3>{value.ap}</h3>
+                  <button onClick={() => playChar(value.charId)}>Play</button>
+                  <button onClick={() => deleteChar(value.charId)}>
+                    Delete
+                  </button>
                 </div>
               );
             })}
