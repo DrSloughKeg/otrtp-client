@@ -1,38 +1,82 @@
+body {
+  background-color: #345830;
+}
+
 .App {
   text-align: center;
+  color: #f2f4f4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .logout {
+    height: 60px;
+    width: 80px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.logRegi {
+  block-size: 900px;
+  background-image: url("../public/background.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  padding: 10px;
+  .logRegiToggle {
+    margin-top: 100px;
+  }
+  .formItem {
+    margin: 10px;
+  }
+}
+.creation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  .stats {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    h3 {
+      margin-left: 10px;
+      margin-bottom: 0px;
+      margin-top: 5px;
+    }
+    p {
+      font-size: 20px;
+    }
+    .statbox {
+      display: flex;
+      button {
+        margin-left: 10px;
+        margin-right: 10px;
+        border: none;
+        background-color: #345830;
+        font-size: 20px;
+        color: goldenrod;
+      }
+    }
+    .remain {
+      margin-left: 45px;
+    }
+  }
+  .classes {
+    width: 60%;
+    .classbox {
+      height: fit-content;
+      display: flex;
+      justify-content: space-around;
+      .selected-class {
+        border: 5px solid goldenrod;
+        border-radius: 4px;
+      }
+    }
+    .classText {
+      max-width: 400px;
+      align-items: center;
+    }
   }
 }

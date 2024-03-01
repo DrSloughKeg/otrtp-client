@@ -18,9 +18,10 @@ function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const accessToken = localStorage.getItem("accessToken");
   useEffect(() => {
-    // TODO: Add Validation?
+    // TODO: Add Validation? fix?
     if (accessToken !== "undefined") {
       setIsLoggedIn(!!accessToken);
+      //navi("/playMenu");
     }
   }, [accessToken]);
 
@@ -80,58 +81,79 @@ function Home() {
   return (
     !isLoggedIn &&
     (!toggleRegi ? (
-      <div>
+      <div className="logRegi">
         {toggleRegiSuccess && <p>Registration successful!</p>}
-        <label>Username: </label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-        />
-        <label>Password: </label>
-        <input
-          type="password"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
-        />
-        <button onClick={login}> Login</button>
-
-        <button onClick={() => SetToggleRegi(true)}>
-          Dont have an account?
-        </button>
+        <div className="formItem">
+          <label>Username: </label>
+        </div>
+        <div className="formItem">
+          <input
+            type="text"
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+          />
+        </div>
+        <div className="formItem">
+          <label>Password: </label>
+        </div>
+        <div className="formItem">
+          <input
+            type="password"
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+        </div>
+        <div className="formItem">
+          <button onClick={login}> Login</button>
+        </div>
+        <div className="logRegiToggle">
+          <button onClick={() => SetToggleRegi(true)}>
+            Dont have an account?
+          </button>
+        </div>
       </div>
     ) : (
-      <div className="outer">
-        <div className="card">
+      <div>
+        <div className="logRegi">
           <Formik
             initialValues={initialValues}
             onSubmit={registration}
             validationSchema={validationSchema}
           >
             <Form>
-              <div className="inner">
+              <div className="formItem">
                 <label>Username: </label>
+              </div>
+              <div className="formItem">
                 <ErrorMessage name="username" component="span" />
                 <Field name="username" />
               </div>
-              <div className="inner">
+              <div className="formItem">
                 <label>Email: </label>
+              </div>
+              <div className="formItem">
                 <ErrorMessage name="email" component="span" />
                 <Field name="email" />
               </div>
-              <div className="inner">
+              <div className="formItem">
                 <label>Password: </label>
+              </div>
+              <div className="formItem">
                 <ErrorMessage name="password" component="span" />
                 <Field name="password" type="password" />
               </div>
-              <div className="inner">
+              <div className="formItem">
                 <button type="submit"> Register!</button>
-
-                <button onClick={() => SetToggleRegi(false)}>
-                  Already have an account? Login!
-                </button>
+                <div>
+                  <button
+                    className="logRegiToggle"
+                    onClick={() => SetToggleRegi(false)}
+                  >
+                    Already have an account? Login!
+                  </button>
+                </div>
               </div>
             </Form>
           </Formik>
