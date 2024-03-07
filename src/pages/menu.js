@@ -124,123 +124,125 @@ function Menu() {
   return (
     <div>
       {toggleCharCreate ? (
-        <div className="creation">
-          <div className="stats">
-            <h3>Strength</h3>
-            <div className="statbox">
-              <button onClick={() => increaseStat(str, setStr)}>+</button>
-              <p>{str}</p>
-              <button onClick={() => decreaseStat(str, setStr)}>-</button>
+        <div>
+          <div className="creation">
+            <div className="stats">
+              <h3>Strength</h3>
+              <div className="statbox">
+                <button onClick={() => increaseStat(str, setStr)}>+</button>
+                <p>{str}</p>
+                <button onClick={() => decreaseStat(str, setStr)}>-</button>
+              </div>
+              <h3>Dexterity</h3>
+              <div className="statbox">
+                <button onClick={() => increaseStat(dex, setDex)}>+</button>
+                <p>{dex}</p>
+                <button onClick={() => decreaseStat(dex, setDex)}>-</button>
+              </div>
+              <h3>Constitution</h3>
+              <div className="statbox">
+                <button onClick={() => increaseStat(con, setCon)}>+</button>
+                <p>{con}</p>
+                <button onClick={() => decreaseStat(con, setCon)}>-</button>
+              </div>
+              <h3>Intelligence</h3>
+              <div className="statbox">
+                <button onClick={() => increaseStat(intl, setIntl)}>+</button>
+                <p>{intl}</p>
+                <button onClick={() => decreaseStat(intl, setIntl)}>-</button>
+              </div>
+              <h3>Wisdom</h3>
+              <div className="statbox">
+                <button onClick={() => increaseStat(wis, setWis)}>+</button>
+                <p>{wis}</p>
+                <button onClick={() => decreaseStat(wis, setWis)}>-</button>
+              </div>
+              <h3>Charisma</h3>
+              <div className="statbox">
+                <button onClick={() => increaseStat(cha, setCha)}>+</button>
+                <p>{cha}</p>
+                <button onClick={() => decreaseStat(cha, setCha)}>-</button>
+              </div>
+              <h3>Points Remaining</h3>
+              <div className="remain">
+                <p>{points}</p>
+              </div>
             </div>
-            <h3>Dexterity</h3>
-            <div className="statbox">
-              <button onClick={() => increaseStat(dex, setDex)}>+</button>
-              <p>{dex}</p>
-              <button onClick={() => decreaseStat(dex, setDex)}>-</button>
-            </div>
-            <h3>Constitution</h3>
-            <div className="statbox">
-              <button onClick={() => increaseStat(con, setCon)}>+</button>
-              <p>{con}</p>
-              <button onClick={() => decreaseStat(con, setCon)}>-</button>
-            </div>
-            <h3>Intelligence</h3>
-            <div className="statbox">
-              <button onClick={() => increaseStat(intl, setIntl)}>+</button>
-              <p>{intl}</p>
-              <button onClick={() => decreaseStat(intl, setIntl)}>-</button>
-            </div>
-            <h3>Wisdom</h3>
-            <div className="statbox">
-              <button onClick={() => increaseStat(wis, setWis)}>+</button>
-              <p>{wis}</p>
-              <button onClick={() => decreaseStat(wis, setWis)}>-</button>
-            </div>
-            <h3>Charisma</h3>
-            <div className="statbox">
-              <button onClick={() => increaseStat(cha, setCha)}>+</button>
-              <p>{cha}</p>
-              <button onClick={() => decreaseStat(cha, setCha)}>-</button>
-            </div>
-            <h3>Points Remaining</h3>
-            <div className="remain">
-              <p>{points}</p>
+            <div className="classes">
+              <label>Name: </label>
+              <input
+                type="text"
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              />
+              <div className="classbox">
+                <div
+                  className={
+                    selectedClass === "warrior" ? "selected-class" : "class"
+                  }
+                  onClick={() => selectClass("warrior")}
+                >
+                  <img src="warrior.png" alt="wizard" />
+                  <h3>Warrior</h3>
+                </div>
+                <div
+                  className={
+                    selectedClass === "rogue" ? "selected-class" : "class"
+                  }
+                  onClick={() => selectClass("rogue")}
+                >
+                  <img src="rogue.png" alt="rogue" />
+                  <h3>Rogue</h3>
+                </div>
+                <div
+                  className={
+                    selectedClass === "wizard" ? "selected-class" : "class"
+                  }
+                  onClick={() => selectClass("wizard")}
+                >
+                  <img src="wizard.png" alt="warrior" />
+                  <h3>Wizard</h3>
+                </div>
+              </div>
+              <div className="classText">
+                {selectedClass === "warrior" && (
+                  <p>
+                    As a Warrior you will have more hit points and combat
+                    focused abilities. You'll be able to use arms and armor
+                    other classes cannot. Your specific skills set means you'll
+                    excel in combat, but you may struggle in other areas.
+                  </p>
+                )}
+                {selectedClass === "rogue" && (
+                  <p>
+                    As a Rogue, you excel in agility and stealth, utilizing your
+                    cunning and finesse to navigate the shadows. With a moderate
+                    amount of health, you possess a versatile skill set for
+                    sneaking, picking locks, and ambushing enemies. Your ability
+                    to blend into the environment and strike from the shadows
+                    makes you a formidable opponent in both combat and stealth
+                    encounters.
+                  </p>
+                )}
+                {selectedClass === "wizard" && (
+                  <p>
+                    Embrace the arcane mysteries as a Wizard, wielding powerful
+                    magic spells to shape the world around you. You will have
+                    less hit points than other classes but, you can rely on your
+                    vast knowledge of magic to overcome challenges and enemies.
+                    Through careful study and mastery of the arcane arts, you
+                    unleash devastating spells, manipulate elements, and unravel
+                    the secrets of the universe. As a Wizard, your intellect and
+                    magical prowess are unmatched, making you a force to be
+                    reckoned with in any encounter.
+                  </p>
+                )}
+              </div>
             </div>
           </div>
-          <div className="classes">
-            <label>Name: </label>
-            <input
-              type="text"
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-            />
-            <div className="classbox">
-              <div
-                className={
-                  selectedClass === "warrior" ? "selected-class" : "class"
-                }
-                onClick={() => selectClass("warrior")}
-              >
-                <img src="wizard.png" alt="wizard" />
-                <h3>Warrior</h3>
-              </div>
-              <div
-                className={
-                  selectedClass === "rogue" ? "selected-class" : "class"
-                }
-                onClick={() => selectClass("rogue")}
-              >
-                <img src="wizard.png" alt="rogue" />
-                <h3>Rogue</h3>
-              </div>
-              <div
-                className={
-                  selectedClass === "wizard" ? "selected-class" : "class"
-                }
-                onClick={() => selectClass("wizard")}
-              >
-                <img src="wizard.png" alt="warrior" />
-                <h3>Wizard</h3>
-              </div>
-            </div>
-            <div className="classText">
-              {selectedClass === "warrior" && (
-                <p>
-                  As a Warrior you will have more hit points and combat focused
-                  abilities. You'll be able to use arms and armor other classes
-                  cannot. Your specific skills set means you'll excel in combat,
-                  but you may struggle in other areas.
-                </p>
-              )}
-              {selectedClass === "rogue" && (
-                <p>
-                  As a Rogue, you excel in agility and stealth, utilizing your
-                  cunning and finesse to navigate the shadows. With a moderate
-                  amount of health, you possess a versatile skill set for
-                  sneaking, picking locks, and ambushing enemies. Your ability
-                  to blend into the environment and strike from the shadows
-                  makes you a formidable opponent in both combat and stealth
-                  encounters.
-                </p>
-              )}
-              {selectedClass === "wizard" && (
-                <p>
-                  Embrace the arcane mysteries as a Wizard, wielding powerful
-                  magic spells to shape the world around you. You will have less
-                  hit points than other classes but, you can rely on your vast
-                  knowledge of magic to overcome challenges and enemies. Through
-                  careful study and mastery of the arcane arts, you unleash
-                  devastating spells, manipulate elements, and unravel the
-                  secrets of the universe. As a Wizard, your intellect and
-                  magical prowess are unmatched, making you a force to be
-                  reckoned with in any encounter.
-                </p>
-              )}
-            </div>
-          </div>
-
           <button onClick={createChar}>Create</button>
+          <button onClick={() => setToggleCharCreate(false)}>Cancel</button>
         </div>
       ) : (
         <div>

@@ -77,7 +77,7 @@ body {
     }
     .classText {
       max-width: 400px;
-      align-items: center;
+      margin: auto;
     }
   }
 }
@@ -85,4 +85,53 @@ body {
 .charCard {
   border: 5px solid #1a1f16;
   border-radius: 5px;
+}
+
+.combatMenu {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  background-color: #95b46a;
+  border-radius: 4px;
+  .mainChoices {
+    p {
+      background-color: #345830;
+      border: 5px solid #1a1f16;
+      border-radius: 4px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 30px;
+      padding-right: 30px;
+      margin: 2px;
+      margin-right: 20px;
+    }
+    .selectedMenuItem {
+      border: 8px solid goldenrod;
+    }
+  }
+  .mainBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #345830;
+    border: 5px solid #1a1f16;
+    border-radius: 4px;
+    width: 80%;
+    .subChoices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      p {
+        background-color: #95b46a;
+        border: 5px solid #1a1f16;
+        width: 90px;
+        border-radius: 4px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 2px;
+      }
+    }
+    .descriptivetext {
+    }
+  }
 }
