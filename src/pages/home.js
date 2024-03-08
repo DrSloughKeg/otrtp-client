@@ -33,15 +33,17 @@ function Home() {
   const login = () => {
     setToggleRegiSuccess(false);
     const data = { username: username, password: password };
-    axios.post("http://localhost:3001/users/login", data).then((response) => {
-      if (response.data.error) {
-        alert(response.data.error);
-      } else {
-        localStorage.setItem("accessToken", response.data);
-        setAuthState(true);
-        navi("/playMenu");
-      }
-    });
+    axios
+      .post(`${process.env.REACT_APP_SITE_URL}/users/login`, data)
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          localStorage.setItem("accessToken", response.data);
+          setAuthState(true);
+          navi("/playMenu");
+        }
+      });
   };
 
   //on regi
@@ -68,14 +70,16 @@ function Home() {
 
   const registration = (data) => {
     setToggleRegiSuccess(false);
-    axios.post("http://localhost:3001/users/regi", data).then((response) => {
-      if (response.data.error) {
-        alert(response.data.error);
-      } else {
-        SetToggleRegi(false);
-        setToggleRegiSuccess(true);
-      }
-    });
+    axios
+      .post(`${process.env.REACT_APP_SITE_URL}/users/regi`, data)
+      .then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          SetToggleRegi(false);
+          setToggleRegiSuccess(true);
+        }
+      });
   };
 
   return (

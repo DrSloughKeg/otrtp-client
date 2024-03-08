@@ -84,12 +84,11 @@ function FirstEvent({
               {/* goblins forest */}
               <button
                 onClick={() => {
-                  setChar((prevChar) => ({
-                    ...prevChar,
+                  const updatedChar = {
+                    ...char,
                     evnt: 1,
-                  }));
-                  updateCharacter(char);
-                  changePlayEvent(1);
+                  };
+                  changePlayEvent(1, updatedChar);
                 }}
               >
                 Charge them!
@@ -108,16 +107,12 @@ function FirstEvent({
               </p>
               <button
                 onClick={() => {
-                  setChar((prevChar) => ({
-                    ...prevChar,
-                    hp: prevChar.hp - 4,
+                  const updatedChar = {
+                    ...char,
+                    hp: char.hp - 4,
                     evnt: 1,
-                  }));
-                  {
-                    /* goblins forest */
-                  }
-                  updateCharacter({ ...char, hp: char.hp - 4, evnt: 1 });
-                  changePlayEvent(1);
+                  };
+                  changePlayEvent(1, updatedChar);
                 }}
               >
                 To arms!
@@ -150,12 +145,11 @@ function FirstEvent({
               {/* goblins forest */}
               <button
                 onClick={() => {
-                  setChar((prevChar) => ({
-                    ...prevChar,
+                  const updatedChar = {
+                    ...char,
                     evnt: 1,
-                  }));
-                  updateCharacter({ ...char, hp: char.hp - 4, evnt: 1 });
-                  changePlayEvent(1);
+                  };
+                  changePlayEvent(1, updatedChar);
                 }}
               >
                 Could have gone better.
@@ -193,12 +187,11 @@ function FirstEvent({
               {/* goblins forest */}
               <button
                 onClick={() => {
-                  setChar((prevChar) => ({
-                    ...prevChar,
+                  const updatedChar = {
+                    ...char,
                     evnt: 1,
-                  }));
-                  updateCharacter({ ...char, hp: char.hp - 4, evnt: 1 });
-                  changePlayEvent(1);
+                  };
+                  changePlayEvent(1, updatedChar);
                 }}
               >
                 Could have gone better.
@@ -228,12 +221,11 @@ function FirstEvent({
               {/* goblins road */}
               <button
                 onClick={() => {
-                  setChar((prevChar) => ({
-                    ...prevChar,
+                  const updatedChar = {
+                    ...char,
                     evnt: 1,
-                  }));
-                  updateCharacter({ ...char, hp: char.hp - 4, evnt: 1 });
-                  changePlayEvent(1);
+                  };
+                  changePlayEvent(1, updatedChar);
                 }}
               >
                 To arms!
@@ -249,13 +241,12 @@ function FirstEvent({
               </p>
               <button
                 onClick={() => {
-                  setChar((prevChar) => ({
-                    ...prevChar,
-                    hp: prevChar.hp - 4,
+                  const updatedChar = {
+                    ...char,
+                    hp: char.hp - 4,
                     evnt: 1,
-                  }));
-                  updateCharacter({ ...char, hp: char.hp - 4, evnt: 1 });
-                  changePlayEvent(1);
+                  };
+                  changePlayEvent(1, updatedChar);
                 }}
               >
                 To arms!

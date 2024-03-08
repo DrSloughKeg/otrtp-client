@@ -15,7 +15,7 @@ function Menu() {
   const [allUserChars, setAllUserChars] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/character/getByUserId", {
+      .get(`${process.env.REACT_APP_SITE_URL}/character/getByUserId`, {
         headers: { accessToken },
       })
       .then((response) => {
@@ -30,7 +30,7 @@ function Menu() {
   //delete character
   const deleteChar = (charId) => {
     axios
-      .delete("http://localhost:3001/character/delete", {
+      .delete(`${process.env.REACT_APP_SITE_URL}/character/delete`, {
         headers: { accessToken },
         data: { charId: charId },
       })
@@ -49,7 +49,7 @@ function Menu() {
   const playChar = (charId) => {
     axios
       .post(
-        "http://localhost:3001/character/play",
+        `${process.env.REACT_APP_SITE_URL}/character/play`,
         { charId: charId },
         { headers: { accessToken } }
       )
@@ -95,7 +95,7 @@ function Menu() {
   const createChar = () => {
     axios
       .post(
-        "http://localhost:3001/character/create",
+        `${process.env.REACT_APP_SITE_URL}/character/create`,
         {
           str: str,
           dex: dex,

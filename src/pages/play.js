@@ -1,7 +1,9 @@
-import react, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FirstEvent from "../components/FirstEvent";
 import SecEvent from "../components/SecEvent";
+import ThirdEvent from "../components/Thirdevent";
+import TheOracle from "../components/theOracle";
 
 function Play() {
   const accessToken = localStorage.getItem("accessToken");
@@ -15,7 +17,7 @@ function Play() {
   const [char, setChar] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/character/getEvent", {
+      .get(`${process.env.REACT_APP_SITE_URL}/character/getEvent`, {
         headers: { accessToken, playToken },
       })
       .then((response) => {
@@ -44,9 +46,13 @@ function Play() {
 
   const updateCharacter = async (characterData) => {
     try {
-      await axios.put("http://localhost:3001/character/update", characterData, {
-        headers: { accessToken },
-      });
+      await axios.put(
+        `${process.env.REACT_APP_SITE_URL}/character/update`,
+        characterData,
+        {
+          headers: { accessToken },
+        }
+      );
       console.log("Character updated");
     } catch (error) {
       console.error("Error updating character:", error);
@@ -54,14 +60,16 @@ function Play() {
     }
   };
 
-  const changePlayEvent = (event) => {
+  //change Play event and update character (autosave)
+  const changePlayEvent = (event, char) => {
     setPlayEvent(event);
+    updateCharacter(char);
   };
 
   //console log to check char state
-  useEffect(() => {
-    console.log(char);
-  }, [char]);
+  // useEffect(() => {
+  //   console.log(char);
+  // }, [char]);
 
   return (
     <div>
@@ -83,6 +91,24 @@ function Play() {
           char={char}
           statCheck={statCheck}
           setChar={setChar}
+          changePlayEvent={changePlayEvent}
+          updateCharacter={updateCharacter}
+        />
+      )}
+      {/* {playEvent === 2 && (
+        <ThirdEvent
+          subEvent={subEvent}
+          setSubEvent={setSubEvent}
+          d20={d20}
+          char={char}
+          statCheck={statCheck}
+          setChar={setChar}
+          changePlayEvent={changePlayEvent}
+          updateCharacter={updateCharacter}
+        />
+      )} */}
+      {playEvent === 2 && (
+        <TheOracle
           changePlayEvent={changePlayEvent}
           updateCharacter={updateCharacter}
         />

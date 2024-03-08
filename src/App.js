@@ -16,13 +16,15 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3001/users", accessToken).then((response) => {
-      if (response.data.error) {
-        setAuthState(false);
-      } else {
-        setAuthState(true);
-      }
-    });
+    axios
+      .get(`${process.env.REACT_APP_SITE_URL}/users`, accessToken)
+      .then((response) => {
+        if (response.data.error) {
+          setAuthState(false);
+        } else {
+          setAuthState(true);
+        }
+      });
   }, [accessToken]);
 
   return (

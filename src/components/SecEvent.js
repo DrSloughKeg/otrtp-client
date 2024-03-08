@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-function SecEvent({ d20, char, statCheck, setChar }) {
+function SecEvent({ d20, char, statCheck, setChar, changePlayEvent }) {
   const [menuSelection, setMenuSelection] = useState("actions");
   const [subSelection, setSubSelect] = useState("");
 
@@ -61,12 +62,42 @@ function SecEvent({ d20, char, statCheck, setChar }) {
     );
   };
 
+  useEffect(() => {
+    if (char.hp <= 0) {
+      axios
+        .delete(`${process.env.REACT_APP_SITE_URL}/character/delete`, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+          data: { charId: char.charId },
+        })
+        .then((response) => {
+          if (response.data.error) {
+            alert(response.data.error);
+          } else {
+            console.log("char deleted");
+          }
+        });
+    }
+  });
+
+  useEffect(() => {
+    if (goblinHealth <= 0) {
+      const updatedChar = { ...char, evnt: 2 };
+      changePlayEvent(2, updatedChar);
+    }
+  }, [goblinHealth]);
+
   return (
     <div>
       <div>
         <img src="road_goblins.png" alt="A group of goblins" />
       </div>
-      <div className="combatText">{combatText}</div>
+      <div className="combatText">
+        <p>
+          {char.charName} has {char.hp} HP and {char.ap} AP. The Enemy has{" "}
+          {goblinHealth} HP.
+        </p>
+        <p>{combatText}</p>
+      </div>
       <div className="combatMenu">
         <div className="mainChoices">
           <div>
