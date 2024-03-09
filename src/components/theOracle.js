@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function TheOracle({ changePlayEvent, updateCharacter }) {
-  const OpenAI = require("openai");
+  // const OpenAI = require("openai");
 
   // const openai = new OpenAI({
   //   apiKey: "",
