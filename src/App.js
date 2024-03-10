@@ -9,15 +9,20 @@ import { AuthContext } from "./components/AuthContext";
 import Navbar from "./components/navBar";
 
 function App() {
+  console.log(process.env.REACT_APP_SITE_URL);
+  console.log(process.env.TEST);
+
   //check if logged in
   const [authState, setAuthState] = useState(false);
-  const accessToken = {
-    headers: { accessToken: localStorage.getItem("accessToken") },
-  };
+  // const accessToken = {
+  //   headers: { accessToken: localStorage.getItem("accessToken") },
+  // };
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SITE_URL}/users`, accessToken)
+      .get(`${process.env.REACT_APP_SITE_URL}/users`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
       .then((response) => {
         if (response.data.error) {
           setAuthState(false);
@@ -25,7 +30,7 @@ function App() {
           setAuthState(true);
         }
       });
-  }, [accessToken]);
+  }, [localStorage.getItem("accessToken")]);
 
   return (
     <div className="App">

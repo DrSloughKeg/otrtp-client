@@ -112,6 +112,9 @@ function Menu() {
       )
       .then((response) => {
         if (response.data.error) {
+          console.log(
+            "/character/create response: " + JSON.stringify(response)
+          );
           alert(response.data.error);
         } else {
           console.log("success");
