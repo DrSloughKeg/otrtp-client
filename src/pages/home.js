@@ -8,6 +8,8 @@ import { AuthContext } from "../components/AuthContext";
 function Home() {
   //navigate
   let navi = useNavigate();
+  //authState
+  const { authState } = useContext(AuthContext);
 
   //toggle regi
   const [toggleRegi, SetToggleRegi] = useState(false);
@@ -16,14 +18,16 @@ function Home() {
 
   //init loggin state and check
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const accessToken = localStorage.getItem("accessToken");
+
   useEffect(() => {
     // TODO: Add Validation? fix?
-    if (accessToken !== "undefined") {
-      setIsLoggedIn(!!accessToken);
-      //navi("/playMenu");
+    if (authState) {
+      setIsLoggedIn(true);
+      navi("/playMenu");
+    } else {
+      navi("/");
     }
-  }, [accessToken]);
+  }, [authState]);
 
   //for login
   const [username, setUsername] = useState("");

@@ -248,24 +248,38 @@ function Menu() {
           <button onClick={() => setToggleCharCreate(false)}>Cancel</button>
         </div>
       ) : (
-        <div>
+        <div className="charSelect">
           {allUserChars &&
             allUserChars.map((value, key) => {
               return (
                 <div key={key} className="charCard">
-                  <h3>{value.charName}</h3>
-                  <h3>{value.lvl}</h3>
-                  <h3>{value.class}</h3>
-                  <h3>{value.hp}</h3>
-                  <h3>{value.ap}</h3>
+                  <div className="line">
+                    <h3>{value.charName}</h3>
+                    <h3>
+                      Level: {value.lvl} {value.class}
+                    </h3>
+                  </div>
+                  <div className="line">
+                    <h3>HP: {value.hp}</h3>
+                    <h3>AP: {value.ap}</h3>
+                  </div>
+                  <h3>
+                    Event: {value.evnt === 0 && "The Beginning"}{" "}
+                    {value.evnt === 1 && "Goblin Attack"}{" "}
+                    {value.evnt === 2 && "Other"}
+                  </h3>
                   <button onClick={() => playChar(value.charId)}>Play</button>
-                  <button onClick={() => deleteChar(value.charId)}>
+                  <button
+                    className="delete"
+                    onClick={() => deleteChar(value.charId)}
+                  >
                     Delete
                   </button>
                 </div>
               );
             })}
           <button
+            className="Special"
             onClick={() => {
               setToggleCharCreate(true);
             }}
