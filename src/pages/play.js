@@ -108,10 +108,7 @@ function Play() {
         />
       )} */}
       {playEvent === 2 && (
-        <TheOracle
-          changePlayEvent={changePlayEvent}
-          updateCharacter={updateCharacter}
-        />
+        <TheOracle changePlayEvent={changePlayEvent} char={char} />
       )}
     </div>
   );
