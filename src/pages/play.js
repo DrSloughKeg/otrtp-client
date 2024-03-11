@@ -25,10 +25,10 @@ function Play() {
           alert(response.data.error);
         } else {
           setChar(response.data);
-          setPlayEvent(char.evnt);
+          setPlayEvent(response.data.evnt);
         }
       });
-  }, [playEvent]);
+  }, []);
   //sub events for choices
   const [subEvent, setSubEvent] = useState("");
 

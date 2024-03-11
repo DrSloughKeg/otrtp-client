@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../components/AuthContext";
 
 function Navbar() {
   //navigate
   let navi = useNavigate();
+  //authState
+  const { setAuthState } = useContext(AuthContext);
   //logout button
   const logout = () => {
+    setAuthState(false);
     localStorage.removeItem("accessToken");
     navi("/");
   };

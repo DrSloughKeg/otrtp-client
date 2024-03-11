@@ -10,6 +10,7 @@ function Home() {
   let navi = useNavigate();
   //authState
   const { authState } = useContext(AuthContext);
+  const { setAuthState } = useContext(AuthContext);
 
   //toggle regi
   const [toggleRegi, SetToggleRegi] = useState(false);
@@ -32,7 +33,6 @@ function Home() {
   //for login
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthState } = useContext(AuthContext);
 
   const login = () => {
     setToggleRegiSuccess(false);

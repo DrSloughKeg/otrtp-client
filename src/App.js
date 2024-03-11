@@ -9,8 +9,7 @@ import { AuthContext } from "./components/AuthContext";
 import Navbar from "./components/navBar";
 
 function App() {
-  console.log(process.env.REACT_APP_SITE_URL);
-  console.log(process.env.TEST);
+  console.log("searching for back end url: " + process.env.REACT_APP_SITE_URL);
 
   //check if logged in
   const [authState, setAuthState] = useState(false);
