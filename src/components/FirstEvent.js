@@ -6,9 +6,7 @@ function FirstEvent({
   d20,
   char,
   statCheck,
-  setChar,
   changePlayEvent,
-  updateCharacter,
 }) {
   return (
     <div>
@@ -169,13 +167,18 @@ function FirstEvent({
                 You burst forth from the trees before screeching a terrible war
                 cry. Waving your weapon wildly about. In flash the goblins run
                 off howling and yelping into the trees. You won't be seeing them
-                again any time soon. <br /> But, what now?
+                again any time soon.
               </p>
-              <button onClick={() => setSubEvent("turnBack")}>
-                Turn back to the road.
-              </button>
-              <button onClick={() => setSubEvent("continue")}>
-                A shortcut through the forest?
+              <button
+                onClick={() => {
+                  const updatedChar = {
+                    ...char,
+                    evnt: 2,
+                  };
+                  changePlayEvent(2, updatedChar);
+                }}
+              >
+                Huzzah!
               </button>
             </div>
           ) : (

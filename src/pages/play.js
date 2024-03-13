@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FirstEvent from "../components/FirstEvent";
 import SecEvent from "../components/SecEvent";
-// import ThirdEvent from "../components/Thirdevent";
+import ThirdEvent from "../components/Thirdevent";
 import TheOracle from "../components/theOracle";
 
 function Play() {
   const accessToken = localStorage.getItem("accessToken");
-
-  //saved player progress in local storage
-  //like a checkpoint based autosave
+  //store character being played
   const playToken = localStorage.getItem("playToken");
+  //store current event
   const [playEvent, setPlayEvent] = useState(-1);
 
   //get character info
@@ -29,21 +28,8 @@ function Play() {
         }
       });
   }, []);
-  //sub events for choices
-  const [subEvent, setSubEvent] = useState("");
 
-  //dice rolls and skill checks
-  const [d20, setD20] = useState(20);
-  useEffect(() => {
-    setD20(roll());
-  }, [subEvent]);
-  const roll = () => {
-    return Math.floor(Math.random() * 20) + 1;
-  };
-  const statCheck = (stat, diffClass, roll) => {
-    return stat + roll >= diffClass;
-  };
-
+  //Save Character info
   const updateCharacter = async (characterData) => {
     try {
       await axios.put(
@@ -64,6 +50,25 @@ function Play() {
   const changePlayEvent = (event, char) => {
     setPlayEvent(event);
     updateCharacter(char);
+    setSubEvent("");
+  };
+
+  //sub events for choices
+  const [subEvent, setSubEvent] = useState("");
+
+  //dice rolls and skill checks
+  //roll 1-20
+  const roll = () => {
+    return Math.floor(Math.random() * 20) + 1;
+  };
+  //set d20 to roll
+  const [d20, setD20] = useState(20);
+  useEffect(() => {
+    setD20(roll());
+  }, [subEvent]);
+  //check roll + stat verus Difficulty Class
+  const statCheck = (stat, diffClass, roll) => {
+    return stat + roll >= diffClass;
   };
 
   //console log to check char state
@@ -80,9 +85,7 @@ function Play() {
           d20={d20}
           char={char}
           statCheck={statCheck}
-          setChar={setChar}
           changePlayEvent={changePlayEvent}
-          updateCharacter={updateCharacter}
         />
       )}
       {playEvent === 1 && (
@@ -92,22 +95,19 @@ function Play() {
           statCheck={statCheck}
           setChar={setChar}
           changePlayEvent={changePlayEvent}
-          updateCharacter={updateCharacter}
         />
       )}
-      {/* {playEvent === 2 && (
+      {playEvent === 2 && (
         <ThirdEvent
           subEvent={subEvent}
           setSubEvent={setSubEvent}
           d20={d20}
           char={char}
           statCheck={statCheck}
-          setChar={setChar}
           changePlayEvent={changePlayEvent}
-          updateCharacter={updateCharacter}
         />
-      )} */}
-      {playEvent === 2 && (
+      )}
+      {playEvent === 7 && (
         <TheOracle changePlayEvent={changePlayEvent} char={char} />
       )}
     </div>
