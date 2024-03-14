@@ -13,9 +13,6 @@ function App() {
 
   //check if logged in
   const [authState, setAuthState] = useState(false);
-  // const accessToken = {
-  //   headers: { accessToken: localStorage.getItem("accessToken") },
-  // };
 
   useEffect(() => {
     axios

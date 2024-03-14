@@ -89,7 +89,7 @@ function SecEvent({ d20, char, statCheck, setChar, changePlayEvent }) {
   return (
     <div>
       <div>
-        <img src="road_goblins.png" alt="A group of goblins" />
+        <img src="forest_goblins.png" alt="A group of goblins" />
       </div>
       <div className="combatText">
         <p>

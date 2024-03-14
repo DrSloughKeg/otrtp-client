@@ -45,8 +45,8 @@ function TheOracle({ changePlayEvent, char }) {
       <button onClick={converse}>Speak</button>
       <button
         onClick={() => {
-          const updatedChar = { ...char, evnt: 3 };
-          changePlayEvent(3, updatedChar);
+          const updatedChar = { ...char, evnt: 10 };
+          changePlayEvent(10, updatedChar);
         }}
       >
         Take your leave

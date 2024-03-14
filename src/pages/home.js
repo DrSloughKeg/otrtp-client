@@ -20,8 +20,8 @@ function Home() {
   //init loggin state and check
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  //if user is already authorized send to menu
   useEffect(() => {
-    // TODO: Add Validation? fix?
     if (authState) {
       setIsLoggedIn(true);
       navi("/playMenu");

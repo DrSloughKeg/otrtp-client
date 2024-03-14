@@ -8,6 +8,8 @@ function Menu() {
 
   //toggle creation
   const [toggleCharCreate, setToggleCharCreate] = useState(false);
+
+  //update list of characters
   const [updatecharlist, setUpdateCharList] = useState(0);
 
   //get a list of all character with this user id

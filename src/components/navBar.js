@@ -18,7 +18,7 @@ function Navbar() {
   return (
     <div className="Navbar">
       <Link to="/">
-        <img src="banner600.png" alt="home" />
+        <img src="banner.png" alt="home" />
       </Link>
       <button className="Special" onClick={logout}>
         Logout

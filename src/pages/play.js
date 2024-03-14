@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FirstEvent from "../components/FirstEvent";
 import SecEvent from "../components/SecEvent";
-import ThirdEvent from "../components/Thirdevent";
+import ThirdEvent from "../components/ThridEvent";
 import TheOracle from "../components/theOracle";
+import GoodEndEvent from "../components/GoodEnd";
 
 function Play() {
   const accessToken = localStorage.getItem("accessToken");
@@ -110,6 +111,7 @@ function Play() {
       {playEvent === 7 && (
         <TheOracle changePlayEvent={changePlayEvent} char={char} />
       )}
+      {playEvent === 10 && <GoodEndEvent subEvent={subEvent} />}
     </div>
   );
 }

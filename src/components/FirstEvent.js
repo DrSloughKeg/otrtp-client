@@ -12,7 +12,7 @@ function FirstEvent({
     <div>
       {subEvent === "" && (
         <div>
-          <img src="road_cart.png" alt="a cart in the road" />
+          <img src="path_cart.png" alt="a cart in the road" />
           <p>
             As you walk along the road to Phandelver, you come across a broken
             wagon sitting in the middle of the trail. What would you like to do?
@@ -25,7 +25,7 @@ function FirstEvent({
       )}
       {subEvent === "investigate" && (
         <div>
-          <img src="road_cart.png" alt="a cart in the road" />
+          <img src="path_cart.png" alt="a cart in the road" />
           <p>
             Investigatation check: you roll a {d20} + {(char.intl - 10) / 2}.
           </p>
@@ -121,6 +121,10 @@ function FirstEvent({
       )}
       {subEvent === "sneakAttack" && (
         <div>
+          <img
+            src="forest_goblins.png"
+            alt="a group of goblins in the forest"
+          />
           <p>
             Steath Check: you roll a {d20} + {(char.dex - 10) / 2}.
           </p>
@@ -158,6 +162,10 @@ function FirstEvent({
       )}
       {subEvent === "scareThemOff" && (
         <div>
+          <img
+            src="forest_goblins.png"
+            alt="a group of goblins in the forest"
+          />
           <p>
             Intimidaton Check: you roll a {d20} + {(char.cha - 10) / 2}.
           </p>
@@ -205,6 +213,7 @@ function FirstEvent({
       )}
       {subEvent === "passItBy" && (
         <div>
+          <img src="path.png" alt="the path to phandelver" />
           <p>
             You pay no heed to the wagon on the road, you have many miles to go,
             and little time to wonder about every piece of junk from here to

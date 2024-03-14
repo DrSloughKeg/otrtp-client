@@ -12,6 +12,7 @@ function ThirdEvent({
     <div>
       {subEvent === "" && (
         <div>
+          <img src="forest.png" alt="A dense forest" />
           <p>
             Those goblins were no match for you. But now you've strayed from the
             road. The way back might take all evening. But what of the way
@@ -25,6 +26,7 @@ function ThirdEvent({
       )}
       {subEvent === "turnBack" && (
         <div>
+          <img src="forest.png" alt="A dense forest" />
           <p>
             You head back the way you came. It may take longer but it's probably
             safest. Who knows what else lurks in these woods.
@@ -33,9 +35,9 @@ function ThirdEvent({
             onClick={() => {
               const updatedChar = {
                 ...char,
-                evnt: 4,
+                evnt: 10,
               };
-              changePlayEvent(4, updatedChar);
+              changePlayEvent(10, updatedChar);
             }}
           >
             Continue
@@ -44,6 +46,7 @@ function ThirdEvent({
       )}
       {subEvent === "shortcut" && (
         <div>
+          <img src="forest.png" alt="A dense forest" />
           <p>
             You push on through the woods. If you head east you should make it
             back to the road, and maybe even save yourself some time.
@@ -75,6 +78,7 @@ function ThirdEvent({
       )}
       {subEvent === "oracleSkip" && (
         <div>
+          <img src="forest.png" alt="A dense forest" />
           <p>
             You press on through the woods. You march all evening. Trying to get
             back to the road before dusk. And as you walk you come to a cliff
