@@ -53,7 +53,7 @@ input {
 
 .logRegi {
   block-size: 600px;
-  background-image: url("../public/background.png");
+  background-image: url("../public/intro.png");
   background-size: auto;
   background-repeat: no-repeat;
   background-position-x: center;
@@ -64,11 +64,14 @@ input {
   .formItem {
     margin: 10px;
   }
+  label {
+    color: #1a1f16;
+  }
 }
 
 .charSelect {
   block-size: 600px;
-  background-image: url("../public/background.png");
+  background-image: url("../public/intro.png");
   background-repeat: no-repeat;
   background-position-x: center;
   display: flex;
@@ -196,7 +199,19 @@ input {
   white-space: pre-line;
   background-color: #95b46a;
   border-radius: 4px;
-  border: 4px solid #f2f4f4;
+  border: 4px solid goldenrod;
   color: #1a1f16;
   padding: 10px;
+  padding-left: 46px;
+  padding-right: 46px;
+}
+.dialogBar {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: auto;
+  input {
+    width: 60%;
+  }
 }

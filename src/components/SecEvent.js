@@ -7,11 +7,11 @@ function SecEvent({ d20, char, statCheck, setChar, changePlayEvent }) {
 
   const actionDescriptions = {
     attack: "Take the attack action",
-    dodge: "Perform a dodge maneuver",
-    disengage: "Attempt to disengage from combat",
-    secondWind: "Use your Second Wind ability to recover health",
-    health: "Drink a health potion",
-    mana: "Consume a mana potion",
+    dodge: "Perform a dodge maneuver (Coming Soon)",
+    disengage: "Attempt to disengage from combat (Coming Soon)",
+    secondWind: "Use your Second Wind ability to recover health (Coming Soon)",
+    health: "Drink a health potion (Coming Soon)",
+    mana: "Consume a mana potion (Coming Soon)",
     // Add more actions and descriptions as needed
   };
 
@@ -58,7 +58,7 @@ function SecEvent({ d20, char, statCheck, setChar, changePlayEvent }) {
       hp: prevChar.hp - 3, // Enemy deals 3 damage
     }));
     setCombatText(
-      combatText + "<br /> The goblins attack you dealing 3 points of damage."
+      combatText + " The goblins attack you dealing 3 points of damage."
     );
   };
 

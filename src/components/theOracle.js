@@ -6,8 +6,13 @@ function TheOracle({ changePlayEvent, char }) {
   const handleInputChange = (event) => {
     setPlayerInput(event.target.value);
   };
-  const [APIresponse, setAPIresponse] = useState("");
-  const [conversation, setConverstation] = useState("");
+
+  const [conversation, setConverstation] = useState(
+    "As you stand before The Oracle, a sense of anticipation and reverence washes over you. " +
+      "You are granted the opportunity to ask one question, a chance to unravel the mysteries of the universe. " +
+      "What knowledge will be of utmost worth to you in this moment of profound opportunity? " +
+      "Choose wisely, for the answer may shape the course of your destiny."
+  );
 
   const callAPI = () => {
     axios
@@ -19,14 +24,8 @@ function TheOracle({ changePlayEvent, char }) {
           alert(response.data.error);
         } else {
           console.log(response.data);
-          setAPIresponse(response.data);
-          if (conversation === "") {
-            const updatedConversation = `${playerInput}\n\n${response.data}`;
-            setConverstation(updatedConversation);
-          } else {
-            const updatedConversation = `${conversation}\n\n\n${playerInput}\n\n${response.data}`;
-            setConverstation(updatedConversation);
-          }
+          const updatedConversation = `${conversation}\n\n\n${playerInput}\n\n${response.data}`;
+          setConverstation(updatedConversation);
         }
       })
       .catch((error) => {
@@ -37,20 +36,23 @@ function TheOracle({ changePlayEvent, char }) {
   const converse = () => {
     callAPI();
   };
+
   return (
     <div>
-      <h1>You arrive at the Oracle.</h1>
+      <img src="oracle.png" alt="The great oracle" />
       <p className="Oracle">{conversation}</p>
-      <input type="text" value={playerInput} onChange={handleInputChange} />
-      <button onClick={converse}>Speak</button>
-      <button
-        onClick={() => {
-          const updatedChar = { ...char, evnt: 10 };
-          changePlayEvent(10, updatedChar);
-        }}
-      >
-        Take your leave
-      </button>
+      <div className="dialogBar">
+        <input type="text" value={playerInput} onChange={handleInputChange} />
+        <button onClick={converse}>Speak</button>
+        <button
+          onClick={() => {
+            const updatedChar = { ...char, evnt: 10 };
+            changePlayEvent(10, updatedChar);
+          }}
+        >
+          Take your leave
+        </button>
+      </div>
     </div>
   );
 }

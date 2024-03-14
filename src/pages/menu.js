@@ -269,6 +269,8 @@ function Menu() {
                     Event: {value.evnt === 0 && "The Beginning"}
                     {value.evnt === 1 && "Goblin Attack"}
                     {value.evnt === 2 && "A Shortcut"}
+                    {value.evnt === 7 && "The Oracle"}
+                    {value.evnt === 10 && "End"}
                   </h3>
                   <button onClick={() => playChar(value.charId)}>Play</button>
                   <button
