@@ -33,7 +33,7 @@ function FirstEvent({
             <div>
               <p>
                 You investigate the wagon closer. You notice clear signs of an
-                attack. This wagon wasnt just left here. It was attacked.
+                attack. This wagon wasn't just left here. It was attacked.
                 Judging by the small foot prints around it's likely to have been
                 a group of goblins.
               </p>

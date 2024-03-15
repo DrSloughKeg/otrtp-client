@@ -55,7 +55,7 @@ function SecEvent({ d20, char, statCheck, setChar, changePlayEvent }) {
     // Simulate enemy's attack
     setChar((prevChar) => ({
       ...prevChar,
-      hp: prevChar.hp - 3, // Enemy deals 3 damage
+      hp: prevChar.hp - 1, // Enemy deals 1 damage
     }));
     setCombatText(
       combatText + " The goblins attack you dealing 3 points of damage."
